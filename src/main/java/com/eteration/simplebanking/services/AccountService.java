@@ -34,9 +34,9 @@ public class AccountService implements IAccountService {
             account.post(transaction);
             transactionDao.save(transaction);
             accountDao.save(account);
-            transactionStatus = new TransactionStatus("OK", transaction.getApprovalCode(), "Para Yatırma Başarılı !");
+            transactionStatus = new TransactionStatus("OK", transaction.getApprovalCode());
         } else {
-            transactionStatus = new TransactionStatus("ERROR", "Müşteri Bulunamadı !");
+            transactionStatus = new TransactionStatus("ERROR");
         }
         return transactionStatus;
     }
@@ -50,9 +50,9 @@ public class AccountService implements IAccountService {
             account.post(transaction);
             transactionDao.save(transaction);
             accountDao.save(account);
-            transactionStatus = new TransactionStatus("OK", transaction.getApprovalCode(), "Para Çekme Başarılı !");
+            transactionStatus = new TransactionStatus("OK", transaction.getApprovalCode());
         } else {
-            transactionStatus = new TransactionStatus("ERROR", "Müşteri Bulunamadı !");
+            transactionStatus = new TransactionStatus("ERROR");
         }
         return transactionStatus;
     }
@@ -66,9 +66,9 @@ public class AccountService implements IAccountService {
             account.post(transaction);
             transactionDao.save(transaction);
             accountDao.save(account);
-            transactionStatus = new TransactionStatus("OK", transaction.getApprovalCode(), "Para Çekme Başarılı !");
+            transactionStatus = new TransactionStatus("OK", transaction.getApprovalCode());
         } else {
-            transactionStatus = new TransactionStatus("ERROR", "Müşteri Bulunamadı !");
+            transactionStatus = new TransactionStatus("ERROR");
         }
         return transactionStatus;
     }
