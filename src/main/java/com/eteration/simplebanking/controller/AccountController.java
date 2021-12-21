@@ -3,9 +3,12 @@ package com.eteration.simplebanking.controller;
 import com.eteration.simplebanking.model.*;
 import com.eteration.simplebanking.services.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 // This class is a place holder you can change the complete implementation
 @Controller
@@ -17,21 +20,21 @@ public class AccountController {
 
     @GetMapping("/{accountNumber}")
     public ResponseEntity<Account> getAccount(@PathVariable String accountNumber) {
-        return ResponseEntity.ok(accountService.findAccount(accountNumber));
+        return new ResponseEntity<>(accountService.findAccount(accountNumber), HttpStatus.OK);
     }
 
     @PostMapping("/credit/{accountNumber}")
     public ResponseEntity<TransactionStatus> credit(@PathVariable String accountNumber, @RequestBody DepositTransaction transaction) throws InsufficientBalanceException {
-        return ResponseEntity.ok(accountService.credit(accountNumber, transaction.getAmount()));
+        return new ResponseEntity<>(accountService.credit(accountNumber, transaction.getAmount()), HttpStatus.OK);
     }
 
     @PostMapping("/debit/{accountNumber}")
     public ResponseEntity<TransactionStatus> debit(@PathVariable String accountNumber, @RequestBody WithdrawalTransaction transaction) throws InsufficientBalanceException {
-        return ResponseEntity.ok(accountService.debit(accountNumber, transaction.getAmount()));
+        return new ResponseEntity<>(accountService.debit(accountNumber, transaction.getAmount()), HttpStatus.OK);
     }
 
     @PostMapping("/paybill/{accountNumber}")
     public ResponseEntity<TransactionStatus> payPhoneBill(@PathVariable String accountNumber, @RequestBody PhoneBillPaymentTransaction transaction) throws InsufficientBalanceException {
-        return ResponseEntity.ok(accountService.payPhoneBill(accountNumber, transaction.getAmount(), transaction.getOperatorName(), transaction.getPhoneNumber()));
+        return new ResponseEntity<>(accountService.payPhoneBill(accountNumber, transaction.getAmount(), transaction.getOperatorName(), transaction.getPhoneNumber()), HttpStatus.OK);
     }
 }

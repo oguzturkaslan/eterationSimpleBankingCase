@@ -5,22 +5,16 @@ public class TransactionStatus {
 
     private String status;
     private String approvalCode;
-    private String message;
 
-    public TransactionStatus(String status, String approvalCode, String message) {
+    public TransactionStatus(String status, String approvalCode) {
         this.status = status;
         this.approvalCode = approvalCode;
-        this.message = message;
     }
 
     public TransactionStatus(String status) {
         this.status = status;
     }
 
-    public TransactionStatus(String status, String message) {
-        this.status = status;
-        this.message = message;
-    }
 
     public String getStatus() {
         return status;
@@ -36,13 +30,5 @@ public class TransactionStatus {
 
     public void setApprovalCode(String approvalCode) {
         this.approvalCode = approvalCode;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 }
